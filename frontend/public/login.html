@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="dropdown">
+            <button class="hamburger" id="dropdownButton">&#9776;</button>
+            <div class="dropdown-content" id="dropdownContent">
+                <a href="dropdown/rules.html">Rules</a>
+                <a href="dropdown/punishments.html">Punishments</a>
+                <a href="index.html">Home</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="login-container">
+        <h2>Login</h2>
+        <form id="loginForm" method="POST" action="/api/auth/login">
+            <input type="text" id="username" name="username" placeholder="Benutzername" required>
+            <input type="password" id="password" name="password" placeholder="Passwort" required>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+    <script src="js/login.js"></script>
+    <script src="js/dropdown.js"></script>
+</body>
+</html>

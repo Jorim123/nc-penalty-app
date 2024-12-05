@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rules</title>
+    <link rel="stylesheet" href="../css/styles.css"> <!-- Relativer Pfad zum Stylesheet -->
+    <style>
+        /* Nur der Titel wird zentriert */
+        h1 {
+            text-align: center;
+            margin-bottom: 20px; /* Abstand zwischen Titel und Rest des Inhalts */
+        }
+
+        /* Alle anderen Inhalte werden linksbündig angezeigt */
+        .content {
+            text-align: left;
+            margin: 0 auto;
+            width: 80%; /* Optionale Anpassung, um den Textbereich etwas einzuschränken */
+            margin-bottom: 40px; /* Mehr Abstand nach unten für das Layout */
+        }
+
+        /* Abstand zwischen Untertiteln und Text */
+        h2, h3 {
+            margin-top: 20px; /* Mehr Abstand oberhalb der Untertitel */
+            margin-bottom: 10px; /* Etwas Abstand unterhalb der Untertitel */
+        }
+
+        /* Abstand für die Liste */
+        ul {
+            margin-bottom: 20px; /* Platz unterhalb der Liste */
+        }
+
+        /* Tabelle tiefer setzen */
+        .container {
+            margin-top: 40px; /* Verschiebt die Tabelle weiter nach unten */
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="dropdown">
+            <button class="hamburger" id="dropdownButton">&#9776;</button>
+            <div class="dropdown-content" id="dropdownContent">
+                <a href="../index.html">Home</a> <!-- Link zur Hauptseite -->
+                <a href="punishments.html">Punishments</a> <!-- Link zur Punishments-Seite -->
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <h1>Rules</h1>
+        <div class="content">
+            <h2>Wichtigste Grundregeln:</h2>
+            <ul>
+                <li>Striche werden ausschliesslich durch IT-Mitarbeiter vergeben.</li>
+                <li>Striche können nicht mehr gelöscht werden. <strong>NIEMALS!</strong></li>
+            </ul>
+
+            <h2>Wann werden Striche vergeben:</h2>
+            <ul>
+                <li>Wenn man offensichtlich jemandem «z'leid wärchet».</li>
+                <li>Flüchtigkeitsfehler (wenn mehrmals in kurzer Zeit der gleiche Fehler gemacht wird, gibt es fairerweise nur 1 Strich).</li>
+                <li>Fehler, durch welche ein Anderer später scheitert oder gehindert wird.</li>
+                <li>Nichteinhalten von Abmachungen.</li>
+                <li>Wenn die Strafaufgabe nach 4 Wochen nicht eingereicht ist.</li>
+            </ul>
+
+            <h2>Fairplay:</h2>
+            <ul>
+                <li>Ankündigung von Strichen.</li>
+                <li>Sind klare Fakten vorhanden, kann der Strich ohne Ankündigung gemacht werden, muss aber fairerweise begründet werden können.</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="../js/dropdown.js"></script> <!-- Relativer Pfad zum Dropdown-Skript -->
+</body>
+</html>

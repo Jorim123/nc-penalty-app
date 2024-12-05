@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NC Penalty</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .modal-body {
+            display: flex; /* Flexbox für nebeneinanderliegende Elemente */
+            justify-content: space-between; /* Verteilt den Raum gleichmäßig zwischen den Elementen */
+            padding: 10px; /* Padding für den gesamten Bereich */
+        }
+
+        .reason-section {
+            width: 48%; /* Links: Begründungen */
+            padding: 5px; /* Padding verringern */
+            background-color: #333;
+            border-radius: 8px;
+        }
+
+        .file-preview-section {
+            width: 48%; /* Rechts: Dateivorschau */
+            padding: 5px; /* Padding verringern */
+            background-color: #333;
+            border-radius: 10px;
+        }
+
+
+        .file-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 2 Spalten für die Dateivorschau */
+            gap: 10px;
+        }
+
+        .file-item {
+            background-color: #5a62d7;
+            border-radius: 10px;
+            text-align: center;
+            color: white;
+            font-weight: bold;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .file-preview {
+            width: 100%;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .preview-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+        }
+
+        .file-name {
+            font-size: 14px;
+            margin-top: 5px;
+            word-wrap: break-word;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <img src="images/nc.png" alt="Logo" class="page-logo">
+    <div class="navbar">
+        <div class="dropdown">
+            <button class="hamburger" id="dropdownButton">&#9776;</button>
+            <div class="dropdown-content" id="dropdownContent">
+                <a href="dropdown/rules.html">Rules</a>
+                <a href="dropdown/punishments.html">Punishments</a>
+                <a href="login.html">Login</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <h1>NC Penalty</h1>
+        <table class="penalty-table">
+            <thead>
+                <tr>
+                    <th class="name-column">Name</th>
+                    <th class="strikes-column">Striche</th>
+                </tr>
+            </thead>
+            <tbody id="penaltiesTable"></tbody>
+        </table>                
+    </div>
+
+    <!-- Modal für Begründungen und Dateivorschau -->
+    <div id="reasonModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeReasonModal()">&times;</span>
+            <div class="modal-body">
+                <!-- Linke Hälfte: Begründungen -->
+                <div class="reason-section">
+                    <h2>Begründungen</h2>
+                    <ul id="reasonList"></ul>
+                </div>
+                <!-- Rechte Hälfte: Dateivorschau -->
+                <div class="file-preview-section">
+                    <h2>Dateien</h2>
+                    <div id="filePreview" class="file-grid"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/index.js"></script>
+    <script src="js/dropdown.js"></script>
+    <script src="js/changecolour.js"></script>
+</body>
+</html>

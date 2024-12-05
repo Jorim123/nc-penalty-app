@@ -1,0 +1,65 @@
+{
+  "users": [
+    {
+      "username": "admin",
+      "password": "$2a$10$nrOBYu396.ELsigYqZLao.YyBZMV6b3kmV19U8KAN2aAbGNbt42S6",
+      "role": "admin"
+    }
+  ],
+  "penalties": [
+    {
+      "name": "testuser 1",
+      "strikes": 2,
+      "reasons": [
+        {
+          "text": "Strich 1",
+          "date": "14.11.2024"
+        },
+        {
+          "text": "Strich 2",
+          "date": "14.11.2024"
+        }
+      ],
+      "blockColor": {
+        "0": "#ffcc00"
+      },
+      "files": [
+        {
+          "filename": "tes5.xlsx",
+          "uploadDate": "2024-11-14T09:10:14.391Z"
+        },
+        {
+          "filename": "nc.png",
+          "uploadDate": "2024-11-14T10:34:23.470Z"
+        }
+      ]
+    },
+    {
+      "name": "testuser 2",
+      "strikes": 3,
+      "reasons": [
+        {
+          "text": "Strich 1",
+          "date": "14.11.2024"
+        },
+        {
+          "text": "Strich 2",
+          "date": "14.11.2024"
+        },
+        {
+          "text": "Strich 3",
+          "date": "14.11.2024"
+        }
+      ],
+      "blockColor": {
+        "0": "#ffcc00"
+      },
+      "files": [
+        {
+          "filename": "Halbtags.pdf",
+          "uploadDate": "2024-11-14T09:10:09.034Z"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,441 @@
+/* Allgemeine Stile */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Hamburger-Menü und Dropdown-Stile */
+.navbar {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    justify-content: flex-end;
+    z-index: 1;
+}
+
+.hamburger {
+    font-size: 30px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #444;
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #555;
+}
+
+/* Container für den Hauptinhalt */
+.container {
+    position: relative;
+    width: 70%;
+    max-width: 1200px;
+    text-align: center;
+    background-color: #222;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    height: 75vh;
+    overflow-y: auto;
+}
+
+.page-logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 100px; /* Größe des Logos anpassen */
+    pointer-events: none; /* Klicks auf das Bild verhindern */
+    z-index: 1;
+}
+
+/* Hintergrundbild im Container */
+.container::before {
+    content: none;
+}
+
+/* Stellt sicher, dass der Inhalt über dem Bild bleibt */
+.container * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Titel */
+h1 {
+    margin-bottom: 20px;
+    color: #f2f2f2;
+    font-size: 2em;
+    text-align: center;
+}
+
+/* Tabellenstil */
+table.penalty-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    table-layout: fixed;
+}
+
+th, td {
+    padding: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Dünne, transparente horizontale Linie */
+    word-wrap: break-word;
+}
+
+/* Stil für die Kopfzeilen */
+th {
+    font-size: 1.2em;
+    color: #5a62d7;
+}
+
+/* Namen rechtsbündig ausrichten und dezente Trennlinie hinzufügen */
+th.name-column, td.name-column {
+    text-align: right;
+    width: 25%;
+    padding-right: 15px;
+    border-right: 1px solid rgba(255, 255, 255, 0.2); /* Dünne, transparente vertikale Linie */
+}
+
+
+/* Namen rechtsbündig ausrichten und Trennlinie hinzufügen */
+td.name-column {
+    text-align: right;
+    width: 25%;
+    padding-right: 15px;
+    font-size: 1.6em;
+    font-weight: 500;
+    border-right: 1px solid rgba(255, 255, 255, 0.2); /* Vertikale Linie als Abtrennung */
+}
+
+
+/* Stile für die strikes-column */
+th.strikes-column, td.strikes-column {
+    text-align: left;
+    padding-left: 15px;
+    color: #5a62d7;
+}
+
+/* Stile für die einzelnen Striche */
+.strike, .strike-block, .strikethrough-diagonal {
+    display: inline-block;
+    color: #5a62d7;
+    margin: 0; /* Je nach gewünschter Dichte bei Bedarf anpassen */
+    font-size: 30px; /* Größere Schriftgröße für die Striche */
+    font-weight: bold;
+    line-height: 1;
+    cursor: pointer;
+}
+
+
+/* Styling für Strichblöcke */
+.strike-block {
+    cursor: pointer;
+}
+
+.strike-block.clicked {
+    color: white !important;
+}
+
+
+/* Styling für diagonale Striche */
+.strikethrough-diagonal:before {
+    position: absolute;
+    content: '';
+    left: 0;
+    top: 50%;
+    right: 0;
+    border-top: 4px solid;
+    border-color: inherit;
+    transform: skewY(-30deg);
+}
+
+/* Drop-Zone Styles */
+.drop-zone {
+    width: 180px;
+    height: 40px;
+    padding: 10px;
+    margin-top: 0;
+    border: 2px dashed #5a62d7;
+    border-radius: 5px;
+    background-color: #222;
+    color: #fff;
+    text-align: center;
+    font-size: 0.8em;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.drop-zone p {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.drop-zone.dragover {
+    background-color: #444;
+}
+
+/* Button für Datei anzeigen */
+.show-files-btn {
+    padding: 10px 15px;
+    font-size: 0.9em;
+    background-color: #5a62d7;
+    color: #222;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.show-files-btn:hover {
+    background-color: #5a62d7;
+}
+
+.file-list {
+    margin-top: 10px;
+    font-size: 0.9em;
+}
+
+.file-list a {
+    color: #5a62d7;
+    text-decoration: none;
+}
+
+.file-list a:hover {
+    text-decoration: underline;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #222;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: rgb(251, 251, 251);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Zweispaltiges Layout im Modal */
+.modal-body {
+    display: flex; /* Flexbox aktivieren */
+    justify-content: space-between; /* Platz zwischen den Elementen */
+}
+
+.reason-section,
+.file-preview-section {
+    width: 48%; /* Jede Hälfte nimmt fast die gesamte Breite ein */
+    padding: 10px; /* Innenabstand für besseren Abstand */
+}
+
+
+.reason-section ul {
+    padding-left: 20px;
+}
+
+.reason-section li {
+    cursor: pointer; /* Zeigt das Zeigefinger-Symbol beim Hover an */
+}
+
+.reason-section li:nth-child(5n+5) {
+    margin-bottom: 10px; /* Fügt nach jeder fünften Begründung einen Abstand hinzu */
+}
+
+.crown-icon {
+    width: 40px;
+    vertical-align: middle;
+    margin-left: 10px;
+    background-color: transparent;
+    pointer-events: none;
+}
+
+#tooltip {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    color: #000;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.version-number {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    color: white;
+    font-size: 0.8em;
+    opacity: 0.7;
+}
+
+
+
+/* Mittlere Bildschirme (Tablets, 768px bis 1200px) */
+@media (max-width: 1200px) {
+    :root {
+        --base-font-size: 14px;
+        --container-width: 85%;
+        --container-padding: 15px;
+        --button-padding: 8px 12px;
+        --modal-width: 90%;
+    }
+
+    .hamburger {
+        font-size: 24px;
+    }
+
+    .page-logo {
+        width: 80px;
+    }
+
+    td.name-column {
+        text-align: right;
+        width: 25%;
+        padding-right: 15px;
+        font-size: 1.2em;
+        font-weight: 500;
+        border-right: 1px solid rgba(255, 255, 255, 0.2); /* Vertikale Linie als Abtrennung */
+    }
+
+    .strike, .strike-block, .strikethrough-diagonal {
+        font-size: 24px;
+    }
+
+    .show-files-btn {
+        font-size: 0.8em;
+    }
+
+    /* Dropdown-Menü Anpassung */
+    .dropdown-content {
+        min-width: 140px;
+        padding: 8px;
+    }
+
+    .dropdown-content a {
+        font-size: 0.9em;
+        padding: 8px 12px;
+    }
+}
+
+/* Kleine Bildschirme (Mobile, unter 768px) */
+@media (max-width: 768px) {
+    :root {
+        --base-font-size: 12px;
+        --container-width: 95%;
+        --container-padding: 10px;
+        --button-padding: 6px 10px;
+        --modal-width: 95%;
+    }
+
+    .hamburger {
+        font-size: 20px;
+    }
+
+    .page-logo {
+        width: 60px;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+    td.name-column {
+        text-align: right;
+        width: 25%;
+        padding-right: 15px;
+        font-size: 1.0em;
+        font-weight: 500;
+        border-right: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .strike, .strike-block, .strikethrough-diagonal {
+        font-size: 20px;
+    }
+
+    th, td {
+        font-size: 0.8em;
+    }
+
+    .show-files-btn {
+        font-size: 0.7em;
+        padding: 8px;
+    }
+
+    .drop-zone {
+        width: 100%;
+        height: 30px;
+        font-size: 0.8em;
+    }
+
+    /* Dropdown-Menü Anpassung */
+    .dropdown-content {
+        min-width: 120px;
+        padding: 6px;
+    }
+
+    .dropdown-content a {
+        font-size: 0.8em;
+        padding: 6px 10px;
+    }
+}

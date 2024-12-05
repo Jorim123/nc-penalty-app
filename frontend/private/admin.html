@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NC Penalty Admin</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Styles for modal */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        .modal-content {
+            background-color: #222;
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Hamburger-Menü und Dropdown-Stile */
+        .navbar {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .hamburger {
+            font-size: 30px;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: #444;
+            min-width: 160px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #555;
+        }
+
+        /* Container für den Hauptinhalt */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            text-align: center;
+            background-color: #222;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            height: 80vh;
+            overflow-y: auto;
+        }
+
+        /* Titel */
+        h1 {
+            margin-bottom: 20px;
+            color: #f2f2f2;
+            font-size: 2em;
+            text-align: center;
+        }
+
+        /* Button zum Hinzufügen eines Benutzers */
+        .add-user-btn {
+            padding: 10px 15px;
+            font-size: 1em;
+            background-color: #5a62d7;
+            color: #222;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .add-user-btn:hover {
+            background-color: #a3a8e4;
+        }
+
+        /* Tabellenstil */
+        table.penalty-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            table-layout: fixed;
+        }
+
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #444;
+            word-wrap: break-word;
+        }
+
+        th {
+            font-size: 1.2em;
+            color: #5a62d7;
+        }
+
+        td {
+            font-size: 1.1em;
+        }
+
+        /* Links bündig für die Striche-Spalte */
+        .wide-strikes-column {
+            width: 200px; /* Breite der Striche-Spalte */
+            text-align: left; /* Links bündig für diese Spalte */
+        }
+
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="dropdown">
+            <button class="hamburger" id="dropdownButton">&#9776;</button>
+            <div class="dropdown-content" id="dropdownContent">
+                <a href="dropdown/rules.html">Rules</a>
+                <a href="dropdown/punishments.html">Punishments</a>
+                <a href="#" onclick="logout()">Logout</a> <!-- Ruft die logout Funktion auf -->
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>NC Penalty Admin</h1>
+        <table class="penalty-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th class="wide-strikes-column">Striche</th>
+                    <th>Aktion</th>
+                    <th>Begründungen</th>
+                    <th>Dateien hochladen</th>
+                    <th>Dateien anzeigen</th>
+                </tr>
+            </thead>
+            <tbody id="penaltiesTable"></tbody>
+        </table>
+        <button class="add-user-btn" id="addUserButton">Benutzer hinzufügen</button>
+    </div>
+
+    <!-- Modal für die Begründungen -->
+    <div id="reasonModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeReasonModal()">&times;</span>
+            <h2>Begründungen</h2>
+            <ul id="reasonList"></ul>
+        </div>
+    </div>
+
+    <!-- Modal für Dateien -->
+    <div id="fileModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeFileModal()">&times;</span>
+            <h2>Dateien anzeigen</h2>
+            <ul id="fileList"></ul>
+        </div>
+    </div>
+
+
+    <div class="version-number">Version 1.3</div>
+
+
+    <!-- Skripte -->
+    <script src="js/admin.js"></script>
+    <script src="js/changecolour.js"></script>
+    <script src="js/dropdown.js"></script>
+    <script>
+        // Automatische Aktualisierung der Tabelle alle Sekunde
+        setInterval(fetchPenalties, 1000); // Ruft die Funktion alle 1000 ms (1 Sekunde) auf
+    </script>
+</body>
+</html>
